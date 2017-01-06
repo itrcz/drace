@@ -1,7 +1,9 @@
 #include "GPS.h"
-#include "Screen.h"
+#include "UI.h"
 
-extern Screen  ui;
+extern UI ui;
+
+GPS gps;
 
 
 GPS::GPS( void )
@@ -9,12 +11,14 @@ GPS::GPS( void )
     memset( _rxBuffer, 0, 128 ) ;
 }
 void GPS::Init( void ) {
+
     UBX_UART.begin(9600);
     //Port settings
-    //this->write(UBX_CLASS_CFG, UBX_ID_PRT, UBX_PORT_SETTINGS, sizeof(UBX_PORT_SETTINGS));
-    //UBX_UART.end();
-    //UBX_UART.begin(115200);
-   
+    this->write(UBX_CLASS_CFG, UBX_ID_PRT, UBX_PORT_SETTINGS, sizeof(UBX_PORT_SETTINGS));
+    UBX_UART.end();
+    delay(100);
+    UBX_UART.begin(115200);
+    
     //Power Settings
     //Set to full power
     //this->write(UBX_CLASS_CFG, UBX_ID_PMS, UBX_PMS_SETTINGS, sizeof(UBX_PMS_SETTINGS));
@@ -48,13 +52,8 @@ void GPS::Update( void ) {
     if (!configurated) {
         return;
     }
-    if (debug) {
-        while (UBX_UART.available()) SerialUSB.write( UBX_UART.read() );
-        while (SerialUSB.available()) UBX_UART.write( SerialUSB.read() );
-        return;
-    }
     
-    if (UBX_UART.available()) {
+    while (UBX_UART.available()) {
         
         char b = UBX_UART.read();
        /// SerialUSB.write(b);
@@ -104,9 +103,9 @@ void GPS::Update( void ) {
                 _rxPos = 0;
                 return;
             }
-            
-            this->_decodePacket();
-            
+            SerialUSB.println("OK");
+            //this->_decodePacket();
+            memset(_rxBuffer, 0, 128);
             _rxPos = 0;
             return;
         }
@@ -114,7 +113,20 @@ void GPS::Update( void ) {
     }
     
 }
+
+
+uint16_t test_sat() {
+    return 10;
+}
+uint16_t test_speed() {
+    return 0;
+}
 void GPS::_decodePacket( void ) {
+    
+    this->sat = test_sat();
+    this->speed = test_speed();
+    return;
+    
     //Если получен пакет с классом NAV
     if (_rxBuffer[UBX_POS_CLASS] == UBX_CLASS_NAV) {
         //Обработка зависит от ID
@@ -125,8 +137,8 @@ void GPS::_decodePacket( void ) {
                 this->fix = _rxBuffer[16];
                 //Количество спутников
                 this->sat = _rxBuffer[53];
-                
-                ui.Accel_update_sat();
+    
+                //ui.Accel_update_sat();
           
                 break;
             // 35.15 NAV-VELNED (0x01 0x12)
@@ -137,9 +149,9 @@ void GPS::_decodePacket( void ) {
 
                 memcpy(&this->speed, gSpeed, 4);
                 
-                ui.Accel_update_speed();
+                //ui.Accel_update_speed();
                 
-                accel.Update();
+                //accel.Update();
                 
                 break;
         }

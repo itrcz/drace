@@ -1,7 +1,7 @@
 #include "Accel.h"
-#include "Screen.h"
+#include "UI.h"
 
-extern Screen  ui;
+extern UI ui;
 
 enum accel_states {
     idle,
@@ -10,6 +10,8 @@ enum accel_states {
     done
 };
 
+
+Accel accel;
 
 Accel::Accel() {
     this->Reset();

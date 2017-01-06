@@ -85,8 +85,8 @@ build: mkdir build_core
 	$(CXX) $(CXXFLAGS) $(CORE_LIBS) src/GPS.cpp -o build/GPS.cpp.o
 	$(AR) rcs build/program.a build/GPS.cpp.o
 
-	$(CXX) $(CXXFLAGS) $(CORE_LIBS) src/Screen.cpp -o build/Screen.cpp.o
-	$(AR) rcs build/program.a build/Screen.cpp.o
+	$(CXX) $(CXXFLAGS) $(CORE_LIBS) src/UI.cpp -o build/UI.cpp.o
+	$(AR) rcs build/program.a build/UI.cpp.o
 
 	#Wire library
 	$(CXX) $(CXXFLAGS) $(CORE_LIBS) src/Wire/Wire.cpp -o build/Wire.cpp.o

@@ -1,5 +1,8 @@
 #include "Gyro.h"
 
+
+Gyro gyro;
+
 Gyro::Gyro() {
     this->ax = 0;
     this->ay = 0;

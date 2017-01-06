@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C214549F1DE212E20076292D /* Screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C214549D1DE212E20076292D /* Screen.cpp */; };
+		C214549F1DE212E20076292D /* UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C214549D1DE212E20076292D /* UI.cpp */; };
 		C23BC7BA1DD25B70004C0EA9 /* Adafruit_GFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23BC7B41DD25B70004C0EA9 /* Adafruit_GFX.cpp */; };
 		C23BC7BB1DD25B70004C0EA9 /* glcdfont.c in Sources */ = {isa = PBXBuildFile; fileRef = C23BC7B71DD25B70004C0EA9 /* glcdfont.c */; };
 		C23BC7BC1DD25B70004C0EA9 /* ST7565.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23BC7B81DD25B70004C0EA9 /* ST7565.cpp */; };
-		C23BC7C01DD25C3D004C0EA9 /* ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23BC7BE1DD25C3D004C0EA9 /* ui.cpp */; };
 		C23BC7C41DD38E0B004C0EA9 /* Gyro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23BC7C21DD38E0B004C0EA9 /* Gyro.cpp */; };
 		C23BC7C71DD38E36004C0EA9 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23BC7C51DD38E36004C0EA9 /* State.cpp */; };
 		C23BC7CA1DD3AB5E004C0EA9 /* GPS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23BC7C81DD3AB5E004C0EA9 /* GPS.cpp */; };
@@ -33,8 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C214549D1DE212E20076292D /* Screen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Screen.cpp; path = src/Screen.cpp; sourceTree = "<group>"; };
-		C214549E1DE212E20076292D /* Screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Screen.h; path = src/Screen.h; sourceTree = "<group>"; };
+		C214549D1DE212E20076292D /* UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UI.cpp; path = src/UI.cpp; sourceTree = "<group>"; };
+		C214549E1DE212E20076292D /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UI.h; path = src/UI.h; sourceTree = "<group>"; };
 		C23BC7AA1DD1A50C004C0EA9 /* boot_img.xbm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = boot_img.xbm; sourceTree = "<group>"; };
 		C23BC7AC1DD1A50C004C0EA9 /* icon_gps.xbm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = icon_gps.xbm; sourceTree = "<group>"; };
 		C23BC7AE1DD1E170004C0EA9 /* test.xbm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = test.xbm; sourceTree = "<group>"; };
@@ -44,8 +43,6 @@
 		C23BC7B71DD25B70004C0EA9 /* glcdfont.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glcdfont.c; path = src/display/glcdfont.c; sourceTree = "<group>"; };
 		C23BC7B81DD25B70004C0EA9 /* ST7565.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ST7565.cpp; path = src/display/ST7565.cpp; sourceTree = "<group>"; };
 		C23BC7B91DD25B70004C0EA9 /* ST7565.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ST7565.h; path = src/display/ST7565.h; sourceTree = "<group>"; };
-		C23BC7BE1DD25C3D004C0EA9 /* ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ui.cpp; path = src/ui.cpp; sourceTree = "<group>"; };
-		C23BC7BF1DD25C3D004C0EA9 /* ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ui.h; path = src/ui.h; sourceTree = "<group>"; };
 		C23BC7C11DD25F48004C0EA9 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = src/display/fonts; sourceTree = "<group>"; };
 		C23BC7C21DD38E0B004C0EA9 /* Gyro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Gyro.cpp; path = src/Gyro.cpp; sourceTree = "<group>"; };
 		C23BC7C31DD38E0B004C0EA9 /* Gyro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gyro.h; path = src/Gyro.h; sourceTree = "<group>"; };
@@ -124,21 +121,27 @@
 			name = product;
 			sourceTree = "<group>";
 		};
+		C26040A81E1E54B500162A42 /* gyro */ = {
+			isa = PBXGroup;
+			children = (
+				C23BC7C21DD38E0B004C0EA9 /* Gyro.cpp */,
+				C23BC7C31DD38E0B004C0EA9 /* Gyro.h */,
+			);
+			name = gyro;
+			sourceTree = "<group>";
+		};
 		C2D0389D1DB1804800CDA511 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C214549D1DE212E20076292D /* Screen.cpp */,
-				C214549E1DE212E20076292D /* Screen.h */,
+				C26040A81E1E54B500162A42 /* gyro */,
+				C214549D1DE212E20076292D /* UI.cpp */,
+				C214549E1DE212E20076292D /* UI.h */,
 				C2526B921DDDDE9F0067F6F4 /* Accel.cpp */,
 				C2526B931DDDDE9F0067F6F4 /* Accel.h */,
 				C23BC7C81DD3AB5E004C0EA9 /* GPS.cpp */,
 				C23BC7C91DD3AB5E004C0EA9 /* GPS.h */,
 				C23BC7C51DD38E36004C0EA9 /* State.cpp */,
 				C23BC7C61DD38E36004C0EA9 /* State.h */,
-				C23BC7C21DD38E0B004C0EA9 /* Gyro.cpp */,
-				C23BC7C31DD38E0B004C0EA9 /* Gyro.h */,
-				C23BC7BE1DD25C3D004C0EA9 /* ui.cpp */,
-				C23BC7BF1DD25C3D004C0EA9 /* ui.h */,
 				C2D0389B1DB17FCC00CDA511 /* main.cpp */,
 				C23BC7BD1DD25BD4004C0EA9 /* display */,
 			);
@@ -269,12 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C23BC7C01DD25C3D004C0EA9 /* ui.cpp in Sources */,
 				C2D0389C1DB17FCC00CDA511 /* main.cpp in Sources */,
 				C23BC7CA1DD3AB5E004C0EA9 /* GPS.cpp in Sources */,
 				C2526B941DDDDE9F0067F6F4 /* Accel.cpp in Sources */,
 				C23BC7BC1DD25B70004C0EA9 /* ST7565.cpp in Sources */,
-				C214549F1DE212E20076292D /* Screen.cpp in Sources */,
+				C214549F1DE212E20076292D /* UI.cpp in Sources */,
 				C23BC7C41DD38E0B004C0EA9 /* Gyro.cpp in Sources */,
 				C23BC7C71DD38E36004C0EA9 /* State.cpp in Sources */,
 				C23BC7BA1DD25B70004C0EA9 /* Adafruit_GFX.cpp in Sources */,
