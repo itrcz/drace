@@ -8,17 +8,11 @@
 #include "Arduino.h"
 #include "display/ST7565.h"
 #include "display/fonts/ThinPixel.h"
+#include "display/fonts/ThinPixelRU.h"
 #include "display/fonts/Minecraftia.h"
 
-#include "GPS.h"
-#include "Gyro.h"
-#include "Accel.h"
 
-extern GPS      gps;
-extern Gyro     gyro;
-extern Accel    accel;
-
-
+#define MIN_SAT_COUNT   4
 
 #define LCD_CS          13
 #define LCD_RST         12
@@ -38,6 +32,8 @@ public:
     void Init( void );
     void Update( void );
     
+    void PrintCyrilic( char * str );
+    
     void buttonsHandler( void );
     
     //virtual void Load( void ) = 0;
@@ -51,33 +47,11 @@ public:
     void PageUnload( void );
     void PageLoad(uint8_t pageId);
     
-    void Splash_load( void );
-    void Splash_unload( void );
-    void Splash_update( void );
-
-    
-    void Menu_select( void );
-    void Menu_load( void );
-    void Menu_unload ( void );
-    void Menu_update( void );
-    void Menu_next( void );
-    void Menu_prev( void );
-    
-    
     void Accel_load( void );
-    void Accel_unload( void );
-    void Accel_update( void );
-    void Accel_update_sat( void );
-    void Accel_update_sat_message( void );
-    void Accel_update_race_message( bool clear );
-    void Accel_update_speed( void );
-    void Accel_update_results_table( bool update );
-    void Accel_results_table_switch( bool next );
-    void Accel_reset( void );
+    void Menu_load( void );
+    void Debug_load( void );
     
-    void Debug_load(void);
-    void Debug_unload(void);
-    
+    void Accel_need_update( void );
     
 private:
     enum screen_pages {
@@ -86,7 +60,37 @@ private:
         page_accel,
         page_debug,
     };
-
+    
+    
+    
+    void Splash_load( void );
+    void Splash_unload( void );
+    void Splash_update( void );
+    
+    
+    void Menu_select( void );
+    void Menu_unload ( void );
+    void Menu_update( void );
+    void Menu_next( void );
+    void Menu_prev( void );
+    
+    bool accel_need_update = false;
+    
+    void Accel_unload( void );
+    void Accel_update( void );
+    
+    void Accel_update_sat( void );
+    void Accel_update_sat_message( void );
+    void Accel_update_race_message( bool clear );
+    void Accel_update_speed( void );
+    void Accel_update_results_table( bool update );
+    void Accel_results_table_switch( bool next );
+    void Accel_reset( void );
+    
+    void Debug_unload(void);
+    void Debug_update(void);
+    
+    
     ST7565 LCD;
     
     int8_t currentPage;

@@ -1,7 +1,10 @@
 #include "GPS.h"
-#include "UI.h"
 
-extern UI ui;
+#include "UI.h"
+#include "Accel.h"
+
+extern UI     ui;
+extern Accel   accel;
 
 GPS gps;
 
@@ -56,7 +59,6 @@ void GPS::Update( void ) {
     while (UBX_UART.available()) {
         
         char b = UBX_UART.read();
-       /// SerialUSB.write(b);
         
         _rxBuffer[_rxPos] = b;
         
@@ -91,7 +93,7 @@ void GPS::Update( void ) {
         //Check CK_A
         if (_rxPos == _rxLength + 6) {
             if (b != _rxCK[0]) {
-                SerialUSB.println("CK_A ERROR");
+                if (SerialUSB) SerialUSB.println("CK_A ERROR");
                 _rxPos = 0;
                 return;
             }
@@ -99,13 +101,12 @@ void GPS::Update( void ) {
         if (_rxPos == _rxLength + 7) {
             
             if (b != _rxCK[1]) {
-                SerialUSB.println("CK_B ERROR");
+                if (SerialUSB) SerialUSB.println("CK_B ERROR");
                 _rxPos = 0;
                 return;
             }
-            SerialUSB.println("OK");
-            //this->_decodePacket();
-            memset(_rxBuffer, 0, 128);
+            this->_decodePacket();
+            
             _rxPos = 0;
             return;
         }
@@ -115,16 +116,12 @@ void GPS::Update( void ) {
 }
 
 
-uint16_t test_sat() {
-    return 10;
-}
-uint16_t test_speed() {
-    return 0;
-}
+
 void GPS::_decodePacket( void ) {
     
-    this->sat = test_sat();
-    this->speed = test_speed();
+    
+    accel.Update();
+    //TEST MODE
     return;
     
     //Если получен пакет с классом NAV

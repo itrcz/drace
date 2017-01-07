@@ -35,6 +35,8 @@ public:
     int16_t getAZ(void) { return az; }
     
 private:
+    bool configurated = false;
+    
     int16_t ax;
     int16_t ay;
     int16_t az;

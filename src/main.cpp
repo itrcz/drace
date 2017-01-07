@@ -77,17 +77,48 @@ int main() {
     init_TC3();
     
 
-    //SerialUSB.begin(115200);
+    SerialUSB.begin(115200);
     
     //Инициализация классов
     ui.Init();
     gps.Init();
+    //gyro.Init();
     
     ui.Menu_load();
     
     while(true) {
         ui.Update();
-        //gps.Update();
+        
+        /*
+         Комманды для тестирования
+         */
+        if (SerialUSB.available()) {
+            char buf = SerialUSB.read();
+            //Добавить 1 ступник [P]
+            if (buf == 112) {
+                if (gps.sat < 255)  {
+                    gps.sat++;
+                } else {
+                    gps.sat = 255;
+                }
+            }
+            //Убрать 1 ступник [O]
+            if (buf == 111) {
+                if (gps.sat > 0) gps.sat--;
+            }
+            //Увеличить скорость 5 км/ч [L]
+            if (buf == 108) {
+                if (gps.speed <= 65000) gps.speed+= 50;
+            }
+            //Уменшить скорость на 5км/ч [K]
+            if (buf == 107) {
+                if (gps.speed > 50) {
+                    gps.speed -= 50;
+                } else {
+                    gps.speed = 0;
+                }
+            }
+        }
     }
     
     return 0;

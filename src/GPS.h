@@ -1,8 +1,9 @@
+#ifndef CLASS_GPS
+#define CLASS_GPS
+
 #include "Arduino.h"
 #include <stdint.h>
 
-#ifndef CLASS_GPS
-#define CLASS_GPS
 
 
 #define UBX_UART Serial5
@@ -94,8 +95,7 @@ public:
     uint32_t    speed;
     
 public:
-    bool debug = false;
-    
+
     GPS( void ) ;
     //Инициализация
     void Init( void );

@@ -7,6 +7,8 @@ Gyro::Gyro() {
     this->ax = 0;
     this->ay = 0;
     this->az = 0;
+    
+    this->configurated = false;
 }
 void Gyro::Init(void) {
     Wire.begin();
@@ -15,8 +17,14 @@ void Gyro::Init(void) {
     //this->write(MPU9250_ADDRESS, 0x1B, GYRO_FULL_SCALE_250_DPS);
     //this->write(MPU9250_ADDRESS,0x37,0x02);
     //this->write(AK8963_ADDRESS,0x0A,0x01);
+    
+    this->configurated = true;
 }
 void Gyro::Update(void) {
+    
+    if ( ! this->configurated ) {
+        return;
+    }
     
     Wire.beginTransmission(MPU9250_ADDRESS);
     Wire.write(0x3B);

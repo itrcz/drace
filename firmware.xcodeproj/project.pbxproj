@@ -32,7 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C214549D1DE212E20076292D /* UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UI.cpp; path = src/UI.cpp; sourceTree = "<group>"; };
+		C214549D1DE212E20076292D /* UI.cpp */ = {isa = PBXFileReference; fileEncoding = 11; lastKnownFileType = sourcecode.cpp.cpp; name = UI.cpp; path = src/UI.cpp; sourceTree = "<group>"; };
 		C214549E1DE212E20076292D /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UI.h; path = src/UI.h; sourceTree = "<group>"; };
 		C23BC7AA1DD1A50C004C0EA9 /* boot_img.xbm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = boot_img.xbm; sourceTree = "<group>"; };
 		C23BC7AC1DD1A50C004C0EA9 /* icon_gps.xbm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = icon_gps.xbm; sourceTree = "<group>"; };
@@ -121,25 +121,25 @@
 			name = product;
 			sourceTree = "<group>";
 		};
-		C26040A81E1E54B500162A42 /* gyro */ = {
+		C26040A81E1E54B500162A42 /* hardware */ = {
 			isa = PBXGroup;
 			children = (
+				C23BC7C81DD3AB5E004C0EA9 /* GPS.cpp */,
+				C23BC7C91DD3AB5E004C0EA9 /* GPS.h */,
 				C23BC7C21DD38E0B004C0EA9 /* Gyro.cpp */,
 				C23BC7C31DD38E0B004C0EA9 /* Gyro.h */,
 			);
-			name = gyro;
+			name = hardware;
 			sourceTree = "<group>";
 		};
 		C2D0389D1DB1804800CDA511 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C26040A81E1E54B500162A42 /* gyro */,
+				C26040A81E1E54B500162A42 /* hardware */,
 				C214549D1DE212E20076292D /* UI.cpp */,
 				C214549E1DE212E20076292D /* UI.h */,
 				C2526B921DDDDE9F0067F6F4 /* Accel.cpp */,
 				C2526B931DDDDE9F0067F6F4 /* Accel.h */,
-				C23BC7C81DD3AB5E004C0EA9 /* GPS.cpp */,
-				C23BC7C91DD3AB5E004C0EA9 /* GPS.h */,
 				C23BC7C51DD38E36004C0EA9 /* State.cpp */,
 				C23BC7C61DD38E36004C0EA9 /* State.h */,
 				C2D0389B1DB17FCC00CDA511 /* main.cpp */,

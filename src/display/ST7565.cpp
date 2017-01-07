@@ -76,7 +76,6 @@ uint8_t ST7565::getpixel(uint8_t x, uint8_t y) {
 void ST7565::clear(void) {
     memset(lcd_buffer, 0, 1024);
 }
-
 void ST7565::fast_bitmap(uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t w, uint8_t h, uint8_t color) {
     for (uint8_t j=0; j<h; j++) {
         for (uint8_t i=0; i<w; i++ ) {

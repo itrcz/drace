@@ -1,10 +1,8 @@
-#include "Arduino.h"
-#include "GPS.h"
-
 #ifndef CLASS_ACCEL
 #define CLASS_ACCEL
 
-extern GPS gps;
+#include "Arduino.h"
+
 
 #define SPEED_RESULTS_TABLE_COUNT 9
 
@@ -30,8 +28,22 @@ public:
         speed_280,
     } speed_enum;
     
+    
+    enum {
+        awaiting,   //Ожидание полной остановки
+        idle,       //Ожидание начала движения
+        soft_start, //Запущен замер в софт режиме
+        race,       //Идет замер
+        done        //Замер окончен
+    } accel_states;
+
+    
     void SetResult(int speed_enum, uint16_t val);
     uint16_t GetResult(int speed_enum);
+    
+    void SetActive( bool is_active );
+    
+    int GetState( void );
     
     void Reset( void );
     
@@ -42,6 +54,7 @@ private:
     void CheckSpeed(uint16_t *speed);
 
 private:
+    bool active = false; //Если false замер не будет выполнятся
     
     uint8_t state;
     uint32_t startTime;
